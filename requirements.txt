@@ -1,6 +1,6 @@
 numpy 
-torch==1.4.0
-torchvision==0.5.0
+torch==2.6.0
+torchvision==0.21.0
 torch_geometric
 torch_sparse
 torch_scatter
@@ -8,5 +8,4 @@ torch_cluster
 matplotlib
 seaborn
 tqdm
-sklearn
-
+scikit-learn

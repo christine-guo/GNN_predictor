@@ -6,7 +6,7 @@ from torch.nn import Parameter
 
 from torch_geometric.data import Data
 from torch_geometric.nn import MessagePassing
-from torch_geometric.utils import  scatter_
+from torch_scatter import scatter
 
 
 
@@ -85,12 +85,12 @@ class GraphEmb(nn.Module):
     def forward(self, h, batch):
         if self.aggr == 'mean':
             h = self.f_m(h)
-            return scatter_('mean', h, batch)
+            return scatter('mean', h, batch)
         elif self.aggr == 'gsum':
             h_vG = self.f_m(h)  
             g_vG = self.sigm(self.g_m(h)) 
             h_G = torch.mul(h_vG, g_vG)   
-            return scatter_('add', h_G, batch)
+            return scatter('add', h_G, batch)
         
 
         
